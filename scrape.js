@@ -1,7 +1,6 @@
 const scrapeIt = require("scrape-it");
 var NodeGeocoder = require('node-geocoder');
 const ImagesClient = require('google-images');
-let client = new ImagesClient('016005128675794900464:2_rzc89hd9c', 'AIzaSyArHmfRENFoOmHd3hnp2ahOfw4eQJ2H_GE');
 var geocoder = NodeGeocoder(options);
 var GeoJSON = require('geojson');
 
@@ -59,8 +58,7 @@ var interval = setInterval(function(){
 		co++;
 		var obj = GeoJSON.parse(array, {Point: ['latitude', 'longitude'], include: ['name','href','desc','img','social']});
 		jsonfile.writeFile(file, obj, function (err) {
-			//console.log(":: Mapified ",mapData.name);
-		  //console.error(err)
+			
 		})
 	})
 	if (co == 534) {
@@ -68,42 +66,12 @@ var interval = setInterval(function(){
 		clearInterval(interval);
 	}
 }, 1000)
-/*
-	
-*/
-
- 
-
-
 
 var options = {
 	provider: 'google',
 
 	// Optional depending on the providers 
 	httpAdapter: 'https', // Default 
-	apiKey: 'AIzaSyDMjuzESIgy5iPWq3YWH7v8BgrxZJsqjME', // for Mapquest, OpenCage, Google Premier 
+	apiKey: 'APIKEY', // for Mapquest, OpenCage, Google Premier 
 	formatter: null // 'gpx', 'string', ... 
 };
-
-
-
-
-
-
-
-
-/*
-<script>
-  (function() {
-    var cx = '016005128675794900464:2_rzc89hd9c';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:search></gcse:search>
-AIzaSyAQp2ri2P7WEsGPO0PpQ3EQD40C2BPPKTA
-*/
